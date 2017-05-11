@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Cot cot ?</title>
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script src="./js/howler.js"></script>
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="icon"
+      type="image/gif"
+      href="./img/blanche.gif">
+
+	</head>
+
+	<body>
+
+		<div class="enclos">
+			<img id="chant" src="./img/enclos.png" alt="enclos"/>
+		</div>
+		<div class="enclos">
+			<img id="beat" src="./img/enclos.png" alt="enclos"/>
+		</div>
+
+	</br>
+
+		<img class="poule" id="blanche" src="./img/blanche.png" alt="poule blanche">
+		<img class="poule" id="marron" src="./img/marron.png" alt="poule marron">
+		<img class="poule" id="grise" src="./img/grise.png" alt="poule grise">
+		<img class="poule" id="blanche2" src="./img/blanche.png" alt="poule blanche">
+		<img class="poule" id="marron2" src="./img/marron.png" alt="poule marron">
+		<img class="poule" id="grise2" src="./img/grise.png" alt="poule grise">
+
+		<script type="text/javascript">
+
+		var enclosChant = $('#chant');
+		var enclosBeat = $('#beat');
+
+
+
+		var chantBlanche = new Howl({
+	    src: ['./sounds/chantBlanche.ogg'],
+	    autoplay: true,
+	    loop: true,
+			mute:true
+	  });
+		var chantMarron = new Howl({
+	    src: ['./sounds/chantMarron.ogg'],
+	    autoplay: true,
+	    loop: true,
+			mute:true
+	  });
+		var chantGrise = new Howl({
+	    src: ['./sounds/chantGrise.ogg'],
+	    autoplay: true,
+	    loop: true,
+			mute:true
+	  });
+
+		var beatBlanche = new Howl({
+	    src: ['./sounds/beatBlanche.ogg'],
+	    autoplay: true,
+	    loop: true,
+			mute:true
+	  });
+		var beatMarron = new Howl({
+	    src: ['./sounds/beatMarron.ogg'],
+	    autoplay: true,
+	    loop: true,
+			mute:true
+	  });
+		var beatGrise = new Howl({
+	    src: ['./sounds/beatGrise.ogg'],
+	    autoplay: true,
+	    loop: true,
+			mute:true
+	  });
+
+
+
+		var blanche = $('#blanche');
+		var marron = $('#marron');
+		var grise = $('#grise');
+		var blanche2 = $('#blanche2');
+		var marron2 = $('#marron2');
+		var grise2 = $('#grise2');
+
+
+
+			blanche.draggable({
+				cursor:'move'
+			});
+			marron.draggable({
+				cursor:'move'
+			});
+			grise.draggable({
+				cursor:'move'
+			});
+			blanche2.draggable({
+				cursor:'move'
+			});
+			marron2.draggable({
+				cursor:'move'
+			});
+			grise2.draggable({
+				cursor:'move'
+			});
+
+			enclosChant.droppable({
+					drop : DropChant,
+					over : UndropChant
+			});
+
+			function DropChant(event, ui) {
+			  var draggableId = ui.draggable.attr("id");
+			  var droppableId = $(this).attr("id");
+				if (draggableId.includes("2")) {
+					draggableIdMod = draggableId.substring(0, draggableId.length - 1);
+					$('#'+draggableId).attr("src","./img/"+draggableIdMod+".gif");
+				}else{
+					$('#'+draggableId).attr("src","./img/"+draggableId+".gif");
+				}
+				//cot.play();
+				if (draggableId=="blanche"||draggableId=="blanche2") {
+					chantBlanche.mute(false);
+				} else if (draggableId=="marron"||draggableId=="marron2"){
+					chantMarron.mute(false);
+				} else if (draggableId=="grise"||draggableId=="grise2"){
+					chantGrise.mute(false);
+				}
+
+			}
+
+			function UndropChant(event, ui){
+				var draggableId = ui.draggable.attr("id");
+			  var droppableId = $(this).attr("id");
+				if (draggableId.includes("2")) {
+					draggableIdMod = draggableId.substring(0, draggableId.length - 1);
+					$('#'+draggableId).attr("src","./img/"+draggableIdMod+".png");
+				}else{
+					$('#'+draggableId).attr("src","./img/"+draggableId+".png");
+				}
+
+				if (draggableId=="blanche"||draggableId=="blanche2") {
+					chantBlanche.mute(true);
+				} else if (draggableId=="marron"||draggableId=="marron2"){
+					chantMarron.mute(true);
+				} else if (draggableId=="grise"||draggableId=="grise2"){
+					chantGrise.mute(true);
+				}
+			}
+
+
+
+
+
+
+			enclosBeat.droppable({
+					drop : DropBeat,
+					over : UndropBeat
+			});
+
+			function DropBeat(event, ui) {
+			  var draggableId = ui.draggable.attr("id");
+			  var droppableId = $(this).attr("id");
+				if (draggableId.includes("2")) {
+					draggableIdMod = draggableId.substring(0, draggableId.length - 1);
+					$('#'+draggableId).attr("src","./img/"+draggableIdMod+".gif");
+				}else{
+					$('#'+draggableId).attr("src","./img/"+draggableId+".gif");
+				}
+
+				//cot.play();
+				if (draggableId=="blanche"||draggableId=="blanche2") {
+					beatBlanche.mute(false);
+				} else if (draggableId=="marron"||draggableId=="marron2"){
+					beatMarron.mute(false);
+				} else if (draggableId=="grise"||draggableId=="grise2"){
+					beatGrise.mute(false);
+				}
+
+			}
+
+			function UndropBeat(event, ui){
+				var draggableId = ui.draggable.attr("id");
+			  var droppableId = $(this).attr("id");
+				if (draggableId.includes("2")) {
+					draggableIdMod = draggableId.substring(0, draggableId.length - 1);
+					$('#'+draggableId).attr("src","./img/"+draggableIdMod+".png");
+				}else{
+					$('#'+draggableId).attr("src","./img/"+draggableId+".png");
+				}
+
+				if (draggableId=="blanche"||draggableId=="blanche2") {
+					beatBlanche.mute(true);
+				} else if (draggableId=="marron"||draggableId=="marron2"){
+					beatMarron.mute(true);
+				} else if (draggableId=="grise"||draggableId=="grise2"){
+					beatGrise.mute(true);
+				}
+			}
+
+
+
+		</script>
+
+	</body>
+</html>

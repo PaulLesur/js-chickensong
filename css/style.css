@@ -1,0 +1,11 @@
+.enclos{
+  display: inline-block;
+  margin: 0px 100px;
+}
+
+body{
+  background-image: url("../img/herbe.png");
+}
+.poule:hover{
+   cursor: grab;
+}
