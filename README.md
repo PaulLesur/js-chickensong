@@ -13,3 +13,8 @@ Des poules qui chantent en JavaScript.
 
 ## Capture d'écran
 ![screenshot from 2017-07-14 18-48-26](https://user-images.githubusercontent.com/11136367/28221803-10174158-68c5-11e7-9e19-2f5ec007705a.png)
+
+## Librairies utilisées
+* Howler.js
+* JQuery UI
+* Interact JS
