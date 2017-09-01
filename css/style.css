@@ -59,3 +59,23 @@ a{
   text-decoration: none;
   color: orange;
 }
+
+.button{
+  font-family: 'pixel';
+  background-color: black;
+  color: white;
+
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+
+  border: 3px solid white;
+  padding: 10px;
+
+  transition: all ease 0.2s;
+}
+.button:hover{
+  box-shadow: 3px -3px 0px black;
+  transform: scale(1.1);
+  cursor: pointer;
+}
